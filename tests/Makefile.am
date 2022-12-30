@@ -5,9 +5,9 @@ dist_noinst_HEADERS = test.h
 noinst_PROGRAMS = testrecord testdatabase
 
 testrecord_SOURCES = testrecord.c
-testrecord_LDADD = ../libmsi/libmsi.la
+testrecord_LDADD = ../libmsi/libmsi.la -lgio-2.0 -lglib-2.0 -lgobject-2.0
 testdatabase_SOURCES = testdatabase.c
-testdatabase_LDADD = ../libmsi/libmsi.la
+testdatabase_LDADD = ../libmsi/libmsi.la -lgio-2.0 -lglib-2.0 -lgobject-2.0
 
 if WIN32
 noinst_PROGRAMS += testsuminfo

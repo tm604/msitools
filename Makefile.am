@@ -26,7 +26,7 @@ AM_CPPFLAGS =						\
 	$(GLIB_CFLAGS) $(GSF_CFLAGS) $(UUID_CFLAGS)	\
 	$(NULL)
 
-AM_LDFLAGS = -Llibmsi
+AM_LDFLAGS = -Llibmsi -lgio-2.0 -lglib-2.0 -lgobject-2.0
 
 # Low-level tools
 bin_SCRIPTS = tools/msidump tools/msidiff
@@ -35,11 +35,11 @@ CLEANFILES += $(bin_SCRIPTS)
 bin_PROGRAMS = msibuild msiinfo
 
 msibuild_SOURCES = tools/msibuild.c tools/sqldelim.c tools/sqldelim.h
-msibuild_LDADD = -lmsi $(GLIB_LIBS) $(GSF_LIBS) $(UUID_LIBS)
+msibuild_LDADD = -lmsi $(GLIB_LIBS) $(GSF_LIBS) $(UUID_LIBS) -lgio-2.0 -lglib-2.0 -lgobject-2.0
 msibuild_DEPENDENCIES = libmsi/libmsi.la
 
 msiinfo_SOURCES = tools/msiinfo.c
-msiinfo_LDADD = -lmsi $(GLIB_LIBS) $(GSF_LIBS)
+msiinfo_LDADD = -lmsi $(GLIB_LIBS) $(GSF_LIBS) -lgio-2.0 -lglib-2.0 -lgobject-2.0
 msiinfo_DEPENDENCIES = libmsi/libmsi.la
 
 # msiextract
@@ -66,7 +66,7 @@ msiextract_SOURCES =				\
 	$(NULL)
 
 msiextract_CPPFLAGS = $(wixl_CPPFLAGS)
-msiextract_LDADD = $(wixl_LDADD)
+msiextract_LDADD = $(wixl_LDADD) -lgio-2.0 -lglib-2.0 -lgobject-2.0
 
 # Wixl
 
@@ -157,7 +157,7 @@ wixl_heat_SOURCES =				\
 	$(NULL)
 
 wixl_heat_CPPFLAGS = $(wixl_CPPFLAGS)
-wixl_heat_LDADD = $(wixl_LDADD)
+wixl_heat_LDADD = $(wixl_LDADD) -lgio-2.0 -lglib-2.0 -lgobject-2.0
 
 # bash completion
 
